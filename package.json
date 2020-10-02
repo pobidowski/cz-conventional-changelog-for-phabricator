@@ -1,6 +1,6 @@
 {
   "name": "@pobidowski/cz-conventional-changelog-for-phabricator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Commitizen adapter following the conventional-changelog format and also asking for Phabricator issue.",
   "main": "index.js",
   "scripts": {

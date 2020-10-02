@@ -89,7 +89,7 @@ module.exports = function(options) {
           message:
             'Enter Phabricator issue (' +
             getFromOptionsOrDefaults('phabricatorPrefix') +
-            '-12345):',
+            '12345):',
           when: options.phabricatorMode,
           default: phabricatorIssue ? phabricatorIssue.substring(1) : '',
           validate: function(phabricator) {
