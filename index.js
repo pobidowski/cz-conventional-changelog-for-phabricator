@@ -18,10 +18,10 @@ function getEnvOrConfig(env, configVar, defaultValue) {
 
 const options = {
   types: conventionalCommitTypes,
-  jiraMode: getEnvOrConfig(
-    process.env.CZ_JIRA_MODE,
-    config.jiraMode,
-    defaults.jiraMode
+  phabricatorMode: getEnvOrConfig(
+    process.env.CZ_PHABRICATOR_MODE,
+    config.phabricatorMode,
+    defaults.phabricatorMode
   ),
   skipScope: getEnvOrConfig(
     process.env.CZ_SKIP_SCOPE,

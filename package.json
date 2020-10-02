@@ -1,7 +1,7 @@
 {
-  "name": "@digitalroute/cz-conventional-changelog-for-jira",
+  "name": "@pobidowski/cz-conventional-changelog-for-phabricator",
   "version": "0.0.0-semantically-released",
-  "description": "Commitizen adapter following the conventional-changelog format and also asking for JIRA issue.",
+  "description": "Commitizen adapter following the conventional-changelog format and also asking for Phabricator issue.",
   "main": "index.js",
   "scripts": {
     "commit": "git-cz",
@@ -9,16 +9,16 @@
     "format": "prettier --write *.js",
     "semantic-release": "semantic-release"
   },
-  "homepage": "https://github.com/digitalroute/cz-conventional-changelog-for-jira",
+  "homepage": "https://github.com/pobidowski/cz-conventional-changelog-for-phabricator",
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalroute/cz-conventional-changelog-for-jira.git"
+    "url": "https://github.com/pobidowski/cz-conventional-changelog-for-phabricator.git"
   },
   "engineStrict": true,
   "engines": {
     "node": ">= 10"
   },
-  "author": "Marcus Johansson <polarn@gmail.com>",
+  "author": "Piotr Obidowski <p.obidowski@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.1",
@@ -47,7 +47,7 @@
   "config": {
     "commitizen": {
       "path": "./index.js",
-      "jiraMode": false,
+      "phabricatorMode": false,
       "skipScope": true
     }
   },

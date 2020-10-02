@@ -44,10 +44,10 @@ module.exports = function(options) {
   const maxHeaderWidth = getFromOptionsOrDefaults('maxHeaderWidth');
 
   const branchName = branch.sync() || '';
-  const jiraIssueRegex = /(?<jiraIssue>\/[A-Z]+-\d+)/;
-  const matchResult = branchName.match(jiraIssueRegex);
-  const jiraIssue =
-    matchResult && matchResult.groups && matchResult.groups.jiraIssue;
+  const phabricatorIssueRegex = /(?<phabricatorIssue>\/[A-Z]+-\d+)/;
+  const matchResult = branchName.match(phabricatorIssueRegex);
+  const phabricatorIssue =
+    matchResult && matchResult.groups && matchResult.groups.phabricatorIssue;
   const hasScopes =
     options.scopes &&
     Array.isArray(options.scopes) &&
@@ -85,18 +85,18 @@ module.exports = function(options) {
         },
         {
           type: 'input',
-          name: 'jira',
+          name: 'phabricator',
           message:
-            'Enter JIRA issue (' +
-            getFromOptionsOrDefaults('jiraPrefix') +
+            'Enter Phabricator issue (' +
+            getFromOptionsOrDefaults('phabricatorPrefix') +
             '-12345):',
-          when: options.jiraMode,
-          default: jiraIssue ? jiraIssue.substring(1) : '',
-          validate: function(jira) {
-            return /^[A-Z]+-[0-9]+$/.test(jira);
+          when: options.phabricatorMode,
+          default: phabricatorIssue ? phabricatorIssue.substring(1) : '',
+          validate: function(phabricator) {
+            return /^[A-Z]+-[0-9]+$/.test(phabricator);
           },
-          filter: function(jira) {
-            return jira.toUpperCase();
+          filter: function(phabricator) {
+            return phabricator.toUpperCase();
           }
         },
         {
@@ -121,14 +121,14 @@ module.exports = function(options) {
           default: options.defaultSubject,
           maxLength: maxHeaderWidth,
           leadingLabel: answers => {
-            const jira = answers.jira ? ` ${answers.jira}` : '';
+            const phabricator = answers.phabricator ? ` ${answers.phabricator}` : '';
             let scope = '';
 
             if (answers.scope && answers.scope !== 'none') {
               scope = `(${answers.scope})`;
             }
 
-            return `${answers.type}${scope}:${jira}`;
+            return `${answers.type}${scope}:${phabricator}`;
           },
           validate: input =>
             input.length >= minHeaderWidth ||
@@ -164,7 +164,7 @@ module.exports = function(options) {
           name: 'isIssueAffected',
           message: 'Does this change affect any open issues?',
           default: options.defaultIssues ? true : false,
-          when: !options.jiraMode
+          when: !options.phabricatorMode
         },
         {
           type: 'input',
@@ -198,10 +198,10 @@ module.exports = function(options) {
 
         // parentheses are only needed when a scope is present
         var scope = answers.scope ? '(' + answers.scope + ')' : '';
-        var jira = answers.jira ? answers.jira + ' ' : '';
+        var phabricator = answers.phabricator ? answers.phabricator + ' ' : '';
 
         // Hard limit this line in the validate
-        const head = answers.type + scope + ': ' + jira + answers.subject;
+        const head = answers.type + scope + ': ' + phabricator + answers.subject;
 
         // Wrap these lines at options.maxLineWidth characters
         var body = answers.body ? wrap(answers.body, wrapOptions) : false;
