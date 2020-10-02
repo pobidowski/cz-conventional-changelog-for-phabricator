@@ -44,7 +44,7 @@ module.exports = function(options) {
   const maxHeaderWidth = getFromOptionsOrDefaults('maxHeaderWidth');
 
   const branchName = branch.sync() || '';
-  const phabricatorIssueRegex = /(?<phabricatorIssue>\/[A-Z]+-\d+)/;
+  const phabricatorIssueRegex = /(?<phabricatorIssue>\/[A-Z]+\d+)/;
   const matchResult = branchName.match(phabricatorIssueRegex);
   const phabricatorIssue =
     matchResult && matchResult.groups && matchResult.groups.phabricatorIssue;
@@ -89,11 +89,11 @@ module.exports = function(options) {
           message:
             'Enter Phabricator issue (' +
             getFromOptionsOrDefaults('phabricatorPrefix') +
-            '12345):',
+            '12345) (press enter to skip):',
           when: options.phabricatorMode,
           default: phabricatorIssue ? phabricatorIssue.substring(1) : '',
           validate: function(phabricator) {
-            return /^[A-Z]+-[0-9]+$/.test(phabricator);
+            return !phabricator || /^[A-Z]+[0-9]+$/.test(phabricator);
           },
           filter: function(phabricator) {
             return phabricator.toUpperCase();
