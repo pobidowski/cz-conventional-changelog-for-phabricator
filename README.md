@@ -16,7 +16,7 @@ Part of the [commitizen](https://github.com/commitizen/cz-cli) family. Prompts f
 ### Installation
 
 ```bash
-npm install commitizen @digitalroute/cz-conventional-changelog-for-phabricator
+npm install commitizen @pobidowski/cz-conventional-changelog-for-phabricator
 ```
 
 and then add the following to package.json:
@@ -28,7 +28,7 @@ and then add the following to package.json:
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/@digitalroute/cz-conventional-changelog-for-phabricator"
+      "path": "./node_modules/@pobidowski/cz-conventional-changelog-for-phabricator"
     }
   }
 }
