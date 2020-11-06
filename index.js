@@ -16,8 +16,6 @@ function getEnvOrConfig(env, configVar, defaultValue) {
   return defaultValue;
 }
 
-console.log(config);
-
 const options = {
   types: conventionalCommitTypes,
   phabricatorMode: getEnvOrConfig(
