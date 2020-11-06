@@ -5,6 +5,7 @@ module.exports = {
   phabricatorMode: true,
   skipPhabricatorMode: true,
   skipScope: true,
+  scopes: [],
   maxHeaderWidth: 72,
   minHeaderWidth: 2,
   maxLineWidth: 100,

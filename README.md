@@ -70,7 +70,12 @@ module.exports = custom({
     }
   },
   skipScope: false,
-  scopes: ['myScope1', 'myScope2']
+  scopes: [
+    {
+      "value": "test",
+      "name": "Test"
+    }
+  ]
 });
 ```
 **./package.json**

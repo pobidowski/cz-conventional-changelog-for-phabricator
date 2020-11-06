@@ -53,6 +53,13 @@ module.exports = function(options) {
     Array.isArray(options.scopes) &&
     options.scopes.length > 0;
 
+    const scopes = map(options.scopes, function(type) {
+      return {
+        name: rightPad(type.value + ':', length) + ' ' + type.name,
+        value: type.value
+      };
+    });
+
   return {
     // When a user runs `git cz`, prompter will
     // be executed. We pass you cz, which currently
@@ -103,7 +110,7 @@ module.exports = function(options) {
           type: hasScopes ? 'list' : 'input',
           name: 'scope',
           when: !options.skipScope,
-          choices: hasScopes ? options.scopes : undefined,
+          choices: hasScopes ? scopes : undefined,
           message:
             'What is the scope of this change (e.g. component or file name): ' +
             hasScopes
